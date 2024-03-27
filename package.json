@@ -1,6 +1,6 @@
 {
-  "name": "eslint-plugin-import",
-  "version": "2.29.1",
+  "name": "@exodus/eslint-plugin-import",
+  "version": "2.29.1-exodus-0",
   "description": "Import with sanity.",
   "engines": {
     "node": ">=4"
@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/import-js/eslint-plugin-import"
+    "url": "https://github.com/ExodusMovement/eslint-plugin-import"
   },
   "keywords": [
     "eslint",
@@ -56,9 +56,9 @@
   "author": "Ben Mosher <me@benmosher.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/import-js/eslint-plugin-import/issues"
+    "url": "https://github.com/ExodusMovement/eslint-plugin-import/issues"
   },
-  "homepage": "https://github.com/import-js/eslint-plugin-import",
+  "homepage": "https://github.com/ExodusMovement/eslint-plugin-import",
   "devDependencies": {
     "@angular-eslint/template-parser": "^13.5.0",
     "@eslint/import-test-order-redirect-scoped": "file:./tests/files/order-redirect-scoped",
