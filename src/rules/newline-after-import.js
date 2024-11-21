@@ -3,6 +3,8 @@
  * @author Radek Benkel
  */
 
+import { getPhysicalFilename, getScope } from 'eslint-module-utils/contextCompat';
+
 import isStaticRequire from '../core/staticRequire';
 import docsUrl from '../docsUrl';
 
@@ -192,9 +194,9 @@ module.exports = {
           requireCalls.push(node);
         }
       },
-      'Program:exit'() {
-        log('exit processing for', context.getPhysicalFilename ? context.getPhysicalFilename() : context.getFilename());
-        const scopeBody = getScopeBody(context.getScope());
+      'Program:exit'(node) {
+        log('exit processing for', getPhysicalFilename(context));
+        const scopeBody = getScopeBody(getScope(context, node));
         log('got scope:', scopeBody);
 
         requireCalls.forEach((node, index) => {

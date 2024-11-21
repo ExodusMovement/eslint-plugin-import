@@ -87,7 +87,7 @@ module.exports = {
 
       // same as above, but does not add names to local map
       ExportNamespaceSpecifier(namespace) {
-        const declaration = importDeclaration(context);
+        const declaration = importDeclaration(context, namespace);
 
         const imports = ExportMapBuilder.get(declaration.source.value, context);
         if (imports == null) { return null; }
@@ -110,7 +110,7 @@ module.exports = {
       MemberExpression(dereference) {
         if (dereference.object.type !== 'Identifier') { return; }
         if (!namespaces.has(dereference.object.name)) { return; }
-        if (declaredScope(context, dereference.object.name) !== 'module') { return; }
+        if (declaredScope(context, dereference.object.name, dereference) !== 'module') { return; }
 
         if (dereference.parent.type === 'AssignmentExpression' && dereference.parent.left === dereference) {
           context.report(
@@ -158,7 +158,7 @@ module.exports = {
         if (!namespaces.has(init.name)) { return; }
 
         // check for redefinition in intermediate scopes
-        if (declaredScope(context, init.name) !== 'module') { return; }
+        if (declaredScope(context, init.name, init) !== 'module') { return; }
 
         // DFS traverse child namespaces
         function testKey(pattern, namespace, path = [init.name]) {

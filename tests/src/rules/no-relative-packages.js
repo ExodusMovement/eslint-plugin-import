@@ -1,4 +1,4 @@
-import { RuleTester } from 'eslint';
+import { RuleTester } from '../rule-tester';
 import rule from 'rules/no-relative-packages';
 import { normalize } from 'path';
 
@@ -73,11 +73,11 @@ ruleTester.run('no-relative-packages', rule, {
       code: 'import bar from "../bar"',
       filename: testFilePath('./package-named/index.js'),
       errors: [{
-        message: `Relative import from another package is not allowed. Use \`${normalize('eslint-plugin-import/tests/files/bar')}\` instead of \`../bar\``,
+        message: `Relative import from another package is not allowed. Use \`${normalize('@exodus/eslint-plugin-import/tests/files/bar')}\` instead of \`../bar\``,
         line: 1,
         column: 17,
       }],
-      output: `import bar from "eslint-plugin-import/tests/files/bar"`,
+      output: `import bar from "@exodus/eslint-plugin-import/tests/files/bar"`,
     }),
   ],
 });
